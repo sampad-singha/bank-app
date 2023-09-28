@@ -1,11 +1,11 @@
-{{-- <x-app-layout>
-    {{-- <x-slot name="header">
+    {{-- <x-app-layout>
+    <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
     </h2>
-    </x-slot> --}}
+    </x-slot>
 
-    {{-- <div class="py-12">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
@@ -41,8 +41,8 @@
                         <p class="text-muted mb-1">Full Stack Developer</p>
                         <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">Follow</button>
-                            <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                            <a class=" u-border-1 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="{{route('logout')}}">logout</a>
+                            <a class=" u-border-1 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="" target="_blank">Edit</a>
                         </div>
                     </div>
                 </div>

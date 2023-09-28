@@ -11,3 +11,5 @@
 
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/npage.css">
+<link rel="stylesheet" href="css/n15.css">

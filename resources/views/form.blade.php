@@ -7,8 +7,6 @@
         <meta name="author" content />
         <title>Form</title>
         @include('links.link')
-        <link rel="stylesheet" href="css/npage.css">
-        <link rel="stylesheet" href="css/n15.css">
     </head>
     <body class="d-flex flex-column">
             <!-- Navigation-->
