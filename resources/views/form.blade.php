@@ -36,7 +36,7 @@
                 <td class="u-table-cell">Personal Account Opening Form</td>
                 <td class="u-table-cell">03 Nov, 2022</td>
                 <td class="u-table-cell">
-                  <a class=" u-border-1 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="{{route('p-account')}}" target="_blank">Fill Form</a>
+                  <a class=" u-border-1 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="{{route('p-account')}}">Fill Form</a>
                 </td>
               </tr>
               <tr style="height: 83px;">

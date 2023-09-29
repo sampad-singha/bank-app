@@ -28,30 +28,31 @@
             opening process.</p>
     </div>
     <div class="p-acc-div">
-        <form>
+        <form action="{{route('p-account-store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="form-group row">
-                <label for="acc-name" class="col-4 col-form-label">Account Name</label>
+                <label for="acc-name" class="col-4 col-form-label">Name</label>
                 <div class="col-8">
-                    <input id="acc-name" name="acc-name" type="text" aria-describedby="acc-nameHelpBlock"
+                    <input id="acc-name" name="name" type="text" aria-describedby="acc-nameHelpBlock"
                         required="required" class="form-control">
-                    <span id="acc-nameHelpBlock" class="form-text text-muted">Use Uppercase Letters</span>
+                    <span id="acc-nameHelpBlock" class="form-text text-muted">Block Letters</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-4">Account Type</label>
                 <div class="col-8">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="acc-type" id="acc-type_0" type="radio" required="required"
-                            class="custom-control-input" value="cheking">
+                        <input name="acc_type" id="acc-type_0" type="radio" required="required"
+                            class="custom-control-input" value="ch">
                         <label for="acc-type_0" class="custom-control-label">Checking</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="acc-type" id="acc-type_1" type="radio" required="required"
-                            class="custom-control-input" value="saving">
+                        <input name="acc_type" id="acc-type_1" type="radio" required="required"
+                            class="custom-control-input" value="sv">
                         <label for="acc-type_1" class="custom-control-label">Saving</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="acc-type" id="acc-type_2" type="radio" required="required"
+                        <input name="acc_type" id="acc-type_2" type="radio" required="required"
                             class="custom-control-input" value="fd">
                         <label for="acc-type_2" class="custom-control-label">Fixed Deposit</label>
                     </div>
@@ -76,13 +77,13 @@
                 <label class="col-4">Account Holder</label>
                 <div class="col-8">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="holder-type" id="holder-type_0" type="radio" required="required"
-                            class="custom-control-input" value="individual">
+                        <input name="holder_type" id="holder-type_0" type="radio" required="required"
+                            class="custom-control-input" value="1">
                         <label for="holder-type_0" class="custom-control-label">Individual</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="holder-type" id="holder-type_1" type="radio" required="required"
-                            class="custom-control-input" value="joint">
+                        <input name="holder_type" id="holder-type_1" type="radio" required="required"
+                            class="custom-control-input" value="2">
                         <label for="holder-type_1" class="custom-control-label">Joint</label>
                     </div>
                 </div>
@@ -90,36 +91,29 @@
             <div class="form-group row">
                 <label for="primary-deposit" class="col-4 col-form-label">Primary Deposit</label>
                 <div class="col-8">
-                    <input id="primary-deposit" name="primary-deposit" type="text" required="required"
+                    <input id="primary-deposit" name="primary_deposit" type="number" min="500" required="required"
                         class="form-control">
+                    <span id="primary-depositHelpBlock" class="form-text text-muted">minimum BDT 500</span>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="f-name" class="col-4 col-form-label">First Name</label>
+            {{-- <div class="form-group row">
+                <label for="holder-name" class="col-4 col-form-label">Account Holder Name</label>
                 <div class="col-8">
-                    <input id="f-name" name="f-name" type="text" aria-describedby="f-nameHelpBlock" required="required"
+                    <input id="holder-name" name="holder-name" type="text" aria-describedby="f-nameHelpBlock" required="required"
                         class="form-control">
                     <span id="f-nameHelpBlock" class="form-text text-muted">Block Letters</span>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="l-name" class="col-4 col-form-label">Last Name</label>
-                <div class="col-8">
-                    <input id="l-name" name="l-name" type="text" aria-describedby="l-nameHelpBlock" required="required"
-                        class="form-control">
-                    <span id="l-nameHelpBlock" class="form-text text-muted">Block Letters</span>
-                </div>
-            </div>
+            </div> --}}
             <div class="form-group row">
                 <label for="dob" class="col-4 col-form-label">Date of Birth</label>
                 <div class="col-8">
-                    <input id="dob" name="dob" type="text" required="required" class="form-control">
+                    <input id="dob" name="dob" type="date" required="required" class="form-control dateselect">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="father-name" class="col-4 col-form-label">Father's Name</label>
                 <div class="col-8">
-                    <input id="father-name" name="father-name" type="text" aria-describedby="father-nameHelpBlock"
+                    <input id="father-name" name="father_name" type="text" aria-describedby="father-nameHelpBlock"
                         required="required" class="form-control">
                     <span id="father-nameHelpBlock" class="form-text text-muted">Block Letters</span>
                 </div>
@@ -127,7 +121,7 @@
             <div class="form-group row">
                 <label for="mother-name" class="col-4 col-form-label">Mother's Name</label>
                 <div class="col-8">
-                    <input id="mother-name" name="mother-name" type="text" aria-describedby="mother-nameHelpBlock"
+                    <input id="mother-name" name="mother_name" type="text" aria-describedby="mother-nameHelpBlock"
                         required="required" class="form-control">
                     <span id="mother-nameHelpBlock" class="form-text text-muted">Block Letters</span>
                 </div>
@@ -135,7 +129,7 @@
             <div class="form-group row">
                 <label for="spouse-name" class="col-4 col-form-label">Spouse Name</label>
                 <div class="col-8">
-                    <input id="spouse-name" name="spouse-name" type="text" aria-describedby="spouse-nameHelpBlock"
+                    <input id="spouse-name" name="spouse_name" type="text" aria-describedby="spouse-nameHelpBlock"
                         class="form-control">
                     <span id="spouse-nameHelpBlock" class="form-text text-muted">Block Letters</span>
                 </div>
@@ -147,22 +141,22 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-4">Gander</label>
+                <label class="col-4">gender</label>
                 <div class="col-8">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="gander" id="gander_0" type="radio" required="required" class="custom-control-input"
-                            value="1">
-                        <label for="gander_0" class="custom-control-label">Male</label>
+                        <input name="gender" id="gender_0" type="radio" required="required" class="custom-control-input"
+                            value="M">
+                        <label for="gender_0" class="custom-control-label">Male</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="gander" id="gander_1" type="radio" required="required" class="custom-control-input"
-                            value="2">
-                        <label for="gander_1" class="custom-control-label">Female</label>
+                        <input name="gender" id="gender_1" type="radio" required="required" class="custom-control-input"
+                            value="F">
+                        <label for="gender_1" class="custom-control-label">Female</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="gander" id="gander_2" type="radio" required="required" class="custom-control-input"
-                            value="3">
-                        <label for="gander_2" class="custom-control-label">Others</label>
+                        <input name="gender" id="gender_2" type="radio" required="required" class="custom-control-input"
+                            value="O">
+                        <label for="gender_2" class="custom-control-label">Others</label>
                     </div>
                 </div>
             </div>
@@ -177,19 +171,19 @@
             <div class="form-group row">
                 <label for="income" class="col-4 col-form-label">Monthly Income</label>
                 <div class="col-8">
-                    <input id="income" name="income" type="text" required="required" class="form-control">
+                    <input id="income" name="income" type="number" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="income-source" class="col-4 col-form-label">Source of Income</label>
                 <div class="col-8">
-                    <input id="income-source" name="income-source" type="text" required="required" class="form-control">
+                    <input id="income-source" name="income_source" type="text" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="tin" class="col-4 col-form-label">TIN No</label>
                 <div class="col-8">
-                    <input id="tin" name="tin" type="text" aria-describedby="tinHelpBlock" class="form-control">
+                    <input id="tin" name="tin" type="text" minlength="12" maxlength="12" aria-describedby="tinHelpBlock" class="form-control">
                     <span id="tinHelpBlock" class="form-text text-muted">Keep the field blank if you don't have TIN
                         account</span>
                 </div>
@@ -208,9 +202,9 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="post" class="col-4 col-form-label">Post</label>
+                <label for="post" class="col-4 col-form-label">Post Code</label>
                 <div class="col-8">
-                    <input id="post" name="post" type="text" required="required" class="form-control">
+                    <input id="post" name="post_code" type="text" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
@@ -222,94 +216,85 @@
             <div class="form-group row">
                 <label for="house-road" class="col-4 col-form-label">House/Road</label>
                 <div class="col-8">
-                    <input id="house-road" name="house-road" type="text" required="required" class="form-control">
+                    <input id="house-road" name="house_road" type="text" required="required" class="form-control">
                 </div>
             </div>
             <p class="sp">Permanent Address</p>
-            {{-- <div class="form-group row">
-                <label class="col-4"></label>
-                <div class="col-8">
-                    <div class="custom-control custom-checkbox custom-control-inline">
-                        <input name="same-as-pre" id="same-as-pre_0" type="checkbox" class="custom-control-input"
-                            value="1">
-                        <label for="same-as-pre_0" class="custom-control-label">Same as Present Address</label>
-                    </div>
-                </div>
-            </div> --}}
             <div class="form-group row">
                 <label for="p-division" class="col-4 col-form-label">Division</label>
                 <div class="col-8">
-                    <input id="p-division" name="p-division" type="text" required="required" class="form-control">
+                    <input id="p-division" name="p_division" type="text" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p-district" class="col-4 col-form-label">District</label>
                 <div class="col-8">
-                    <input id="p-district" name="p-district" type="text" required="required" class="form-control">
+                    <input id="p-district" name="p_district" type="text" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="p-post" class="col-4 col-form-label">Post</label>
+                <label for="p-post" class="col-4 col-form-label">Post Code</label>
                 <div class="col-8">
-                    <input id="p-post" name="p-post" type="text" required="required" class="form-control">
+                    <input id="p-post" name="p_post_code" type="text" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p-thana" class="col-4 col-form-label">Thana</label>
                 <div class="col-8">
-                    <input id="p-thana" name="p-thana" type="text" required="required" class="form-control">
+                    <input id="p-thana" name="p_thana" type="text" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="p-house-road" class="col-4 col-form-label">House/Road</label>
                 <div class="col-8">
-                    <input id="p-house-road" name="p-house-road" type="text" required="required" class="form-control">
+                    <input id="p-house-road" name="p_house_road" type="text" required="required" class="form-control">
                 </div>
             </div>
             <br><br>
             <div class="form-group row">
                 <label for="mobile" class="col-4 col-form-label">Mobile No</label>
                 <div class="col-8">
-                    <input id="mobile" name="mobile" type="text" required="required" class="form-control">
+                    <input id="mobile" name="mobile" type="tel" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="mail" class="col-4 col-form-label">Email</label>
                 <div class="col-8">
-                    <input id="mail" name="mail" type="text" class="form-control">
+                    <input id="mail" name="mail" type="email" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="nid" class="col-4 col-form-label">National ID</label>
                 <div class="col-8">
-                    <input id="nid" name="nid" type="text" required="required" class="form-control">
+                    <input id="nid" name="nid" type="text" minlength="10" maxlength="10" required="required" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="passport" class="col-4 col-form-label">Passport</label>
                 <div class="col-8">
-                    <input id="passport" name="passport" type="text" class="form-control">
+                    <input id="passport" name="passport" type="text" minlength="9" maxlength="9" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="ref-name" class="col-4 col-form-label">Name</label>
                 <div class="col-8">
-                    <input id="ref-name" name="ref-name" type="text" required="required" class="form-control">
+                    <input id="ref-name" name="ref_name" type="text" required="required" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ref-acc" class="col-4 col-form-label">Account No</label>
+                <div class="col-8">
+                    <input id="ref-acc" name="ref_acc" type="text" minlength="10" maxlength="10"  class="form-control" required="required">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="img" class="col-4 col-form-label">Upload Image</label>
                 <div class="col-8">
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">.png .jpg .jpeg (max size-2MB)</label>
+                        <label for="formFile" class="form-label"></label>
                         <input class="form-control" type="file" id="formFile" accept=".jpg , .png , .jpeg">
+                        <span id="" class="form-text text-muted">Supported Types: .png .jpg .jpeg (max size-2MB)</span>
                     </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="ref-acc" class="col-4 col-form-label">Account No</label>
-                <div class="col-8">
-                    <input id="ref-acc" name="ref-acc" type="text" class="form-control" required="required">
                 </div>
             </div>
             <div class="form-group row">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonalAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,11 @@ return view('user-profile');
 
 
 // Form Routes
-Route::get('/form/personal-account', function () {
-return view('forms.p-account');
-})->name('p-account');
+// Route::get('/form/personal-account', function () {
+// return view('forms.p-account');
+// })->name('p-account');
+Route::get('/open-account', [PersonalAccountController::class, 'index'])->name('p-account');
+Route::post('/open-account', [PersonalAccountController::class, 'storeAccountInfo'])->name('p-account-store');
 
 
 Route::get('/dashboard', function () {
