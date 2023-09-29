@@ -33,7 +33,7 @@
             <div class="form-group row">
                 <label for="acc-name" class="col-4 col-form-label">Name</label>
                 <div class="col-8">
-                    <input id="acc-name" name="name" type="text" aria-describedby="acc-nameHelpBlock"
+                    <input id="account_holder_name" name="account_holder_name" type="text" aria-describedby="acc-nameHelpBlock"
                         required="required" class="form-control">
                     <span id="acc-nameHelpBlock" class="form-text text-muted">Block Letters</span>
                 </div>
@@ -42,17 +42,17 @@
                 <label class="col-4">Account Type</label>
                 <div class="col-8">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="acc_type" id="acc-type_0" type="radio" required="required"
+                        <input name="account_type" id="acc-type_0" type="radio" required="required"
                             class="custom-control-input" value="ch">
                         <label for="acc-type_0" class="custom-control-label">Checking</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="acc_type" id="acc-type_1" type="radio" required="required"
+                        <input name="account_type" id="acc-type_1" type="radio" required="required"
                             class="custom-control-input" value="sv">
                         <label for="acc-type_1" class="custom-control-label">Saving</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="acc_type" id="acc-type_2" type="radio" required="required"
+                        <input name="account_type" id="acc-type_2" type="radio" required="required"
                             class="custom-control-input" value="fd">
                         <label for="acc-type_2" class="custom-control-label">Fixed Deposit</label>
                     </div>
@@ -77,12 +77,12 @@
                 <label class="col-4">Account Holder</label>
                 <div class="col-8">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="holder_type" id="holder-type_0" type="radio" required="required"
+                        <input name="account_holder" id="holder-type_0" type="radio" required="required"
                             class="custom-control-input" value="1">
                         <label for="holder-type_0" class="custom-control-label">Individual</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input name="holder_type" id="holder-type_1" type="radio" required="required"
+                        <input name="account_holder" id="holder-type_1" type="radio" required="required"
                             class="custom-control-input" value="2">
                         <label for="holder-type_1" class="custom-control-label">Joint</label>
                     </div>
@@ -260,7 +260,7 @@
             <div class="form-group row">
                 <label for="mail" class="col-4 col-form-label">Email</label>
                 <div class="col-8">
-                    <input id="mail" name="mail" type="email" class="form-control">
+                    <input id="mail" name="email" type="email" class="form-control">
                 </div>
             </div>
             <div class="form-group row">
@@ -284,7 +284,7 @@
             <div class="form-group row">
                 <label for="ref-acc" class="col-4 col-form-label">Account No</label>
                 <div class="col-8">
-                    <input id="ref-acc" name="ref_acc" type="text" minlength="10" maxlength="10"  class="form-control" required="required">
+                    <input id="ref-acc" name="ref_account_no" type="text" minlength="10" maxlength="10"  class="form-control" required="required">
                 </div>
             </div>
             <div class="form-group row">
@@ -292,7 +292,7 @@
                 <div class="col-8">
                     <div class="mb-3">
                         <label for="formFile" class="form-label"></label>
-                        <input class="form-control" type="file" id="formFile" accept=".jpg , .png , .jpeg">
+                        <input class="form-control" type="file" id="formFile" name="image" accept=".jpg , .png , .jpeg">
                         <span id="" class="form-text text-muted">Supported Types: .png .jpg .jpeg (max size-2MB)</span>
                     </div>
                 </div>
