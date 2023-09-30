@@ -28,7 +28,7 @@ return view('form');
 })->name('form');
 route::get('/services', function () {
 return view('services');
-})->name('services');
+})->middleware(['auth', 'verified'])->name('services');
 route::get('/profile', function () {
 return view('user-profile');
 })->name('user-profile');
@@ -52,3 +52,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+//Admin Routes
+
+// Route::prefix('admin')->group(function () {
+//     Route::get('/', function () {
+//         return view('admin.index');
+//     })->name('admin.index');
+//     Route::get('/table', function () {
+//         return view('admin.tables');
+//     })->name('admin.table');
+// });
