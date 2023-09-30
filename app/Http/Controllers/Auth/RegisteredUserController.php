@@ -14,6 +14,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;
 
+
 class RegisteredUserController extends Controller
 {
     /**

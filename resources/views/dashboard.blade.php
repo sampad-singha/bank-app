@@ -35,11 +35,11 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3">John Smith</h5>
-                        <p class="text-muted mb-1">Full Stack Developer</p>
-                        <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                        <img src="{{asset('/storage/images/'. $ac->image_path)}}"
+                            alt="" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{$ac->account_holder_name}}</h5>
+                        <p class="text-muted mb-1">{{$ac->occupation}}</p>
+                        <p class="text-muted mb-4">{{$ac->house_road . ', ' . $ac->thana . ', ' . $ac->district . '-' . $ac->post_code}}</p>
                         <div class="d-flex justify-content-center mb-2">
                             <a class=" u-border-1 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="{{route('logout')}}">logout</a>
                             <a class=" u-border-1 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="" target="_blank">Edit</a>
@@ -81,7 +81,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">Johnatan Smith</p>
+                                <p class="text-muted mb-0">{{$ac->account_holder_name}}</p>
                             </div>
                         </div>
                         <hr>
@@ -90,16 +90,16 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">example@example.com</p>
+                                <p class="text-muted mb-0">{{$ac->email}}</p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Phone</p>
+                                <p class="mb-0">National ID</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">(097) 234-5678</p>
+                                <p class="text-muted mb-0">{{$ac->nid}}</p>
                             </div>
                         </div>
                         <hr>
@@ -108,7 +108,7 @@
                                 <p class="mb-0">Mobile</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">(098) 765-4321</p>
+                                <p class="text-muted mb-0">{{$ac->mobile}}</p>
                             </div>
                         </div>
                         <hr>
@@ -117,7 +117,7 @@
                                 <p class="mb-0">Address</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                <p class="text-muted mb-0">{{$ac->house_road . ', ' . $ac->thana . ', ' . $ac->district . '-' . $ac->post_code . ', ' . $ac->division}}</p>
                             </div>
                         </div>
                     </div>

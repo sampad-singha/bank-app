@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 class PersonalAccountController extends Controller
 {
@@ -54,5 +56,17 @@ class PersonalAccountController extends Controller
         $account->save();
         return back()->with('success', 'Account created successfully');
         
+    }
+    public function showAccountInfo(){
+        // dd($user_email = Auth::user()->email);
+        $user_email = Auth::user()->email;
+        $account = DB::table('accounts')->where('email', $user_email)->get();
+        if($account->isEmpty()){
+            $ac = null;
+            return view('dashboard', compact('ac'))->with('success', $ac);
+        }
+        $ac = $account[0];
+        
+        return view('dashboard', compact('ac'))->with('success', $ac);
     }
 }

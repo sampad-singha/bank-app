@@ -36,16 +36,14 @@ return view('user-profile');
 
 
 // Form Routes
-// Route::get('/form/personal-account', function () {
-// return view('forms.p-account');
-// })->name('p-account');
 Route::get('/open-account', [PersonalAccountController::class, 'index'])->name('p-account');
 Route::post('/open-account', [PersonalAccountController::class, 'storeAccountInfo'])->name('p-account-store');
 
-
+//Dashboard Routes
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [PersonalAccountController::class, 'showAccountInfo'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
