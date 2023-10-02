@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id('account_id');
+
+//            removed
             $table->string('account_name', 50);
             $table->string('account_number', 10)->unique();
+
             $table->enum('account_type', ['sv', 'ch', 'fd']);
             $table->enum('account_holder', ['1', '2']);
             $table->string('account_holder_name', 50);

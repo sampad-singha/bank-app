@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('accounts', function (Blueprint $table) {
-            if (Schema::hasColumn('accounts', 'account_holder_name')) {
-                $table->dropColumn('account_holder_name');
-            }
+            $table->decimal('balance', 10, 2)
+                ->default(0);
         });
     }
 
@@ -24,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->string('account_holder_name');
+            if(Schema::hasColumn('accounts', 'balance'))
+                $table->dropColumn('balance');
         });
     }
 };
