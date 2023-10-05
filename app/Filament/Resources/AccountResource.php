@@ -26,7 +26,17 @@ class AccountResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Group::make()
+                    ->schema([
+                        Forms\Components\Section::make()->label('Account Information')
+                            ->schema([
+                                Forms\Components\TextInput::make('account_holder_name')
+                                    ->label('Name')
+                                    ->required()
+                                    ->autofocus(),
+
+                            ])
+                    ])
             ]);
     }
 
@@ -132,6 +142,14 @@ class AccountResource extends Resource
                     ->label('Reference Account No')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('gender')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('account_type')
+                    ->label('Account Type')
+                    ->searchable()
+                    ->sortable(),
+
 
 
             ])

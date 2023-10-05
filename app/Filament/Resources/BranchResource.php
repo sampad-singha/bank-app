@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
-use Faker\Provider\Text;
+use App\Filament\Resources\BranchResource\Pages;
+use App\Filament\Resources\BranchResource\RelationManagers;
+use App\Models\Branch;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserResource extends Resource
+class BranchResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = Branch::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,23 +25,16 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\Group::make()
                     ->schema([
-                        Forms\Components\Section::make()
-                            ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->autofocus()
-                                    ->required(),
-                                Forms\Components\TextInput::make('email')
-                                    ->email()
-                                    ->live()
-                                    ->required()
-                                    ->unique(),
-                                Forms\Components\TextInput::make('password')
-                                    ->password()
-                                    ->live()
-                                    ->required(),
-                            ])
+                        Forms\Components\TextInput::make('branch_name')
+                            ->placeholder('Pabna')
+                            ->type('text')
+                            ->autofocus()
+                            ->required()
+                            ->alphaDash()
+                            ->unique()
+                            ->regex('/^([A-Z][a-z]*)$/')
+                            ->helperText('First letter must be capital and only alphabets are allowed.')
                     ])
-
             ]);
     }
 
@@ -50,16 +42,13 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('id')
+                    ->label('Branch ID')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('email')
+                Tables\Columns\TextColumn::make('branch_name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('Account.account_id')
-                    ->searchable()
-                    ->sortable(),
-
             ])
             ->filters([
                 //
@@ -87,9 +76,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListBranches::route('/'),
+            'create' => Pages\CreateBranch::route('/create'),
+            'edit' => Pages\EditBranch::route('/{record}/edit'),
         ];
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Account extends Model
 {
@@ -44,19 +45,24 @@ class Account extends Model
         'ref_name',
         'ref_account_no',
         'image_path',
-        'account_holder_name'
+        'account_holder_name',
+        'branch_id',
     ];
-    protected $casts = [
-        'gender' => GenderStatus::class
-    ];
+//    protected $casts = [
+//        'gender' => GenderStatus::class
+//    ];
 
     public function accounts():HasMany
     {
-        return $this->hasMany(transactions::class, 'account_id');
+        return $this->hasMany(Transaction::class, 'account_id');
     }
-    public function users():BelongsTo
+    public function users():HasOne
     {
-        return $this->belongsTo(User::class, 'email');
+        return $this->hasOne(User::class, 'email');
+    }
+    public function branches():BelongsTo
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
     }
 
 }

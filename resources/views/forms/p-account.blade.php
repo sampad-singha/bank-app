@@ -43,17 +43,17 @@
                 <div class="col-8">
                     <div class="custom-control custom-radio custom-control-inline">
                         <input name="account_type" id="acc-type_0" type="radio" required="required"
-                            class="custom-control-input" value="ch">
+                            class="custom-control-input" value="Checking">
                         <label for="acc-type_0" class="custom-control-label">Checking</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input name="account_type" id="acc-type_1" type="radio" required="required"
-                            class="custom-control-input" value="sv">
+                            class="custom-control-input" value="Saving">
                         <label for="acc-type_1" class="custom-control-label">Saving</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input name="account_type" id="acc-type_2" type="radio" required="required"
-                            class="custom-control-input" value="fd">
+                            class="custom-control-input" value="Fixed Deposit">
                         <label for="acc-type_2" class="custom-control-label">Fixed Deposit</label>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                 <div class="col-8">
                     <div class="custom-control custom-radio custom-control-inline">
                         <input name="gender" id="gender_0" type="radio" required="required" class="custom-control-input"
-                            value="M">
+                            value="Male">
                         <label for="gender_0" class="custom-control-label">Male</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
