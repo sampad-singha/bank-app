@@ -58,7 +58,7 @@ class Account extends Model
     }
     public function users():HasOne
     {
-        return $this->hasOne(User::class, 'email');
+        return $this->hasOne(User::class, 'account_id');
     }
     public function branches():BelongsTo
     {
