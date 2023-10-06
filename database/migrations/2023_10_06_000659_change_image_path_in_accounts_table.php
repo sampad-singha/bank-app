@@ -12,12 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->foreignId('branch_id')
-                ->nullable()
-                ->references('id')
-                ->on('branches');
-//                ->cascadeOnDelete()
-//                ->cascadeOnUpdate();
+            $table->string('image_path',10000)->default('Image Not Found')->change();
         });
     }
 
@@ -27,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->dropForeign(['branch_id']);
-            $table->dropColumn('branch_id');
+            $table->string('image_path',255)->default('Image Not Found')->change();
         });
     }
 };

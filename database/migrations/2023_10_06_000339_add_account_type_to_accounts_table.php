@@ -12,12 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->foreignId('branch_id')
-                ->nullable()
-                ->references('id')
-                ->on('branches');
-//                ->cascadeOnDelete()
-//                ->cascadeOnUpdate();
+            $table->enum('account_type', ['Checking', 'Saving', 'Fixed Deposit']);
         });
     }
 
@@ -27,8 +22,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->dropForeign(['branch_id']);
-            $table->dropColumn('branch_id');
+            if(Schema::hasColumn('accounts', 'account_type'))
+                $table->dropColumn('account_type');
         });
     }
 };

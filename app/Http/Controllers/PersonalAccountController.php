@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Auth;
 
 class PersonalAccountController extends Controller
 {
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('forms.p-account');
     }
-    public function storeAccountInfo(Request $request){
+    public function storeAccountInfo(Request $request): \Illuminate\Http\RedirectResponse
+    {
         $account = new Account();
-        // dd($request->all());
+
 
         $account->account_holder_name = $request->account_holder_name;
         $account->account_type = $request->account_type;
@@ -48,25 +49,30 @@ class PersonalAccountController extends Controller
         $account->ref_account_no = $request->ref_account_no;
 
         $image = $request->file('image');
-        $image_name = time() . '-' . $request->email . '-' . $image->getClientOriginalName();
+        $image_name = time() . '-' . $request->email. '.' . $image->extension();
         $image->storeAs('public/images', $image_name);
         $account->image_path = $image_name;
         // $account->image_path = '$request->image_path';
+//        dd($account->image_path);
 
         $account->save();
         return back()->with('success', 'Account created successfully');
-        
+
     }
     public function showAccountInfo(){
         // dd($user_email = Auth::user()->email);
         $user_email = Auth::user()->email;
+//        dd($user_email);
         $account = DB::table('accounts')->where('email', $user_email)->get();
         if($account->isEmpty()){
-            $ac = null;
-            return view('dashboard', compact('ac'))->with('success', $ac);
+            $ac = "No account found";
+//            return view('dashboard', compact('ac'))->with('success', $ac);
+            Auth::logout();
+            return view('welcome');
         }
+
         $ac = $account[0];
-        
+
         return view('dashboard', compact('ac'))->with('success', $ac);
     }
 }

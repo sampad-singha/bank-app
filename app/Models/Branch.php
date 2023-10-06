@@ -12,7 +12,8 @@ class Branch extends Model
 
     protected $fillable = [
         'branch_name',
-        'id'
+        'id',
+        'branch_code',
     ];
 
     public function account():HasMany
