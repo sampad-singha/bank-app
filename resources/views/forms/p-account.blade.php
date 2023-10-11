@@ -89,6 +89,20 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="branch-name" class="col-4 col-form-label">Branch Name</label>
+                <div class="col-8">
+{{--                    <input id="branch_name" name="branch_name" type="text" required="required"--}}
+{{--                           class="form-control">--}}
+                    <select class="form-select" aria-label="Default select example" name="branch_code">
+                        <option selected>Branch Name</option>
+{{--                        {{$branchName = Branch::select('branch_name','branch_code')->get()}}--}}
+                        @foreach($branches as $bn)
+                            <option value="{{$bn->branch_code}}">{{$bn->branch_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label for="primary-deposit" class="col-4 col-form-label">Primary Deposit</label>
                 <div class="col-8">
                     <input id="primary-deposit" name="primary_deposit" type="number" min="500" required="required"
@@ -96,14 +110,6 @@
                     <span id="primary-depositHelpBlock" class="form-text text-muted">minimum BDT 500</span>
                 </div>
             </div>
-            {{-- <div class="form-group row">
-                <label for="holder-name" class="col-4 col-form-label">Account Holder Name</label>
-                <div class="col-8">
-                    <input id="holder-name" name="holder-name" type="text" aria-describedby="f-nameHelpBlock" required="required"
-                        class="form-control">
-                    <span id="f-nameHelpBlock" class="form-text text-muted">Block Letters</span>
-                </div>
-            </div> --}}
             <div class="form-group row">
                 <label for="dob" class="col-4 col-form-label">Date of Birth</label>
                 <div class="col-8">

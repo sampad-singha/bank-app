@@ -1,0 +1,6 @@
+.dp{
+    border-radius:50% !important;
+    height: 150px !important;
+    width: 150px !important;
+    aspect-ratio: 4/3;
+}

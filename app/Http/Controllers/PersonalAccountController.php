@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,8 @@ class PersonalAccountController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('forms.p-account');
+        $branches = DB::table('branches')->select('branch_name','branch_code')->get();
+        return view('forms.p-account', compact('branches'))->with('success', $branches);
     }
     public function storeAccountInfo(Request $request): \Illuminate\Http\RedirectResponse
     {
@@ -47,9 +49,17 @@ class PersonalAccountController extends Controller
         $account->p_house_road = $request->p_house_road;
         $account->ref_name = $request->ref_name;
         $account->ref_account_no = $request->ref_account_no;
+        $account->primary_deposit = $request->primary_deposit;
 
+        //Creating Branch Section
+//        $branch = DB::table('branches')->where('branch_name', $request->branch_name)->get();
+//        $account->branch_code = $branch[0]->branch_code;
+        $account->branch_code = $request->branch_code;
+
+        //Creating Image Section
         $image = $request->file('image');
-        $image_name = time() . '-' . $request->email. '.' . $image->extension();
+//        $image_name = time() . '-' . $request->email. '.' . $image->extension();
+        $image_name = time() . '-' . $image->getClientOriginalName();
         $image->storeAs('public/images', $image_name);
         $account->image_path = $image_name;
         // $account->image_path = '$request->image_path';
@@ -65,10 +75,10 @@ class PersonalAccountController extends Controller
 //        dd($user_email);
         $account = DB::table('accounts')->where('email', $user_email)->get();
         if($account->isEmpty()){
-            $ac = "No account found";
-//            return view('dashboard', compact('ac'))->with('success', $ac);
-            Auth::logout();
-            return view('welcome');
+            $ac = null;
+            return view('dashboard', compact('user_email'))->with('success', $user_email);
+//            Auth::logout();
+//            return view('welcome');
         }
 
         $ac = $account[0];

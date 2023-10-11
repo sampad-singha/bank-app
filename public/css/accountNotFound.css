@@ -1,0 +1,42 @@
+.accountNotFoundDiv {
+    background: #fff;
+    /*height: 100% !important;*/
+    height: 90vh;
+}
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+    height: 100%;
+}
+.error-template img{
+    width: 300px;
+    margin-bottom: 100px;
+}
+.error-details{
+    margin-bottom: 100px;
+}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions a {
+    /*margin-right:10px; */
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px;
+    color: #eee;
+    background-color: #212529;
+    padding: 12px 40px;
+    border-radius: 100px;
+    border: 1px solid #212529;
+}
+.error-actions a:hover {
+    color: #212529!important;
+    background-color: #eee!important;
+    border: 1px solid #212529!important;
+}
+.user_mail{
+    color: red;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
