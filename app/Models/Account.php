@@ -58,9 +58,9 @@ class Account extends Model
     {
         return $this->hasMany(Transaction::class, 'account_id');
     }
-    public function users():HasOne
+    public function user():HasOne
     {
-        return $this->hasOne(User::class, 'account_id');
+        return $this->hasOne(User::class, 'account_no');
     }
     public function branches():BelongsTo
     {
