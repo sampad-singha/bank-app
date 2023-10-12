@@ -99,10 +99,14 @@ class AccountResource extends Resource
                             ->schema([
                                 Forms\Components\FileUpload::make('image_path')
                                     ->image()
-                                    ->directory('images')
-                                    ->getUploadedFileNameForStorageUsing(function(TemporaryUploadedFile $file){
-                                        return time() . '-' . $file->getClientOriginalName();
-                                    })
+                                    ->directory('/images')
+//                                    ->getUploadedFileNameForStorageUsing(function(TemporaryUploadedFile $file){
+//                                        return time() . '-' . $file->getClientOriginalName();
+//                                    })
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                            ->prepend(time(),'-'),
+                                    )
                                     ->label('Image')
                                     ->required(),
                             ]),

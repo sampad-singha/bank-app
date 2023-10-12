@@ -59,7 +59,7 @@ class PersonalAccountController extends Controller
         //Creating Image Section
         $image = $request->file('image');
 //        $image_name = time() . '-' . $request->email. '.' . $image->extension();
-        $image_name = time() . '-' . $image->getClientOriginalName();
+        $image_name ='images/' . time() . '-' . $image->getClientOriginalName();
         $image->storeAs('public/images', $image_name);
         $account->image_path = $image_name;
         // $account->image_path = '$request->image_path';
