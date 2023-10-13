@@ -30,9 +30,9 @@ return view('form');
 route::get('/services', function () {
 return view('services');
 })->middleware(['auth', 'verified'])->name('services');
-route::get('/profile', function () {
-return view('user-profile');
-})->name('user-profile');
+//route::get('/profile', function () {
+//return view('user-profile');
+//})->name('user-profile');
 // services routes
 
 
@@ -40,10 +40,6 @@ return view('user-profile');
 Route::get('/open-account', [PersonalAccountController::class, 'index'])->name('p-account');
 Route::post('/open-account', [PersonalAccountController::class, 'storeAccountInfo'])->name('p-account-store');
 
-//Dashboard Routes
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard', [PersonalAccountController::class, 'showAccountInfo'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -52,16 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Transaction Routes
+Route::post('/withdraw', [PersonalAccountController::class, 'withdraw'])->name('withdraw');
+
 require __DIR__.'/auth.php';
-
-
-//Admin Routes
-
-// Route::prefix('admin')->group(function () {
-//     Route::get('/', function () {
-//         return view('admin.index');
-//     })->name('admin.index');
-//     Route::get('/table', function () {
-//         return view('admin.tables');
-//     })->name('admin.table');
-// });

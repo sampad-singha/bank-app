@@ -66,17 +66,5 @@ class Account extends Model
     {
         return $this->belongsTo(Branch::class, 'branch_id');
     }
-//    protected static function boot()
-//    {
-//        parent::boot();
-//        static::creating(function ($account){
-//            if($account->status == 'Accepted') {
-//                $temp = $account->branch_code . $account->account_id;
-//                $account->account_no = intval($temp);
-//
-//                $account->balance = $account->primary_deposit;
-//            }
-//        });
-//    }
 
 }

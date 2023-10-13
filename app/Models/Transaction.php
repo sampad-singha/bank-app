@@ -14,8 +14,9 @@ class Transaction extends Model
 //    protected $primaryKey = 'transaction_id';
 
     protected $fillable = [
-        'account_id',
+        'account_no',
         'type',
+        'trx_no',
         'receiver_id',
         'amount',
         'status'
@@ -23,6 +24,6 @@ class Transaction extends Model
 
     public function transactions(): BelongsTo
     {
-        return $this->BelongsTo(Account::class, 'account_id');
+        return $this->BelongsTo(Account::class, 'account_no');
     }
 }
