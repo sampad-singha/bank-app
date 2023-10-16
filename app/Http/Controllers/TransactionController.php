@@ -9,20 +9,21 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    public function transactions(){
+    public function transactions(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    {
         $email = Auth::user()->email;
         $account_no = DB::table('accounts')
             ->where('email', $email)
             ->get('account_no');
         $account_no = $account_no[0]->account_no;
-        $transactions = DB::table('transactions')
+        //        return view('dashboard', compact('transactions'))->with('success', $transactions);
+        return DB::table('transactions')
             ->where('account_no', $account_no)
             ->latest()
             ->paginate(10);
-//        return view('dashboard', compact('transactions'))->with('success', $transactions);
-        return $transactions;
     }
-    public function withdraw(Request $request){
+    public function withdraw(Request $request): \Illuminate\Http\RedirectResponse
+    {
         $email = Auth::user()->email;
         $account_no = DB::table('accounts')
             ->where('email', $email)

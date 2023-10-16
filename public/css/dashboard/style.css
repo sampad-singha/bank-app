@@ -8386,8 +8386,13 @@ body{
     position: sticky;
     top: 0;
     height: fit-content;
-    padding-bottom: 38px;
+    padding-bottom: 50px;
     /*padding-top: 75px;*/
+}
+.activated{
+    background-color: #F5F5F5;
+    color: #32373D;
+    /*border-bottom: 1px solid #2f89fc;*/
 }
 .content{
     display: none;
@@ -8446,4 +8451,31 @@ body{
 }
 .amount[type=number]:focus{
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+/*                                      Transactions*/
+.transaction_table .table{
+    text-overflow-ellipsis: ellipsis;
+    text-align: center;
+}
+.trx{
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.trx:hover{
+    overflow: visible;
+    white-space: normal;
+    word-wrap: break-word;
+}
+.transaction_table tr:hover{
+    cursor: pointer;
+    background-color: #F5F5F5;
+}
+.red{
+    color: red;
+}
+.green{
+    color: green;
 }

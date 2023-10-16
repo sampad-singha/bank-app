@@ -1,7 +1,5 @@
 <div class="content Transactions">
     <div class="transaction-box">
-
-        <h4>Transactions</h4>
         <div class="container">
             <div class="info_table">
                 <h4>Account Information</h4>
@@ -23,34 +21,37 @@
                 </div>
             </div>
             <div class="info_table">
-                <table>
+                <h4>Transactions</h4>
+                <table class="transaction_table table .table-hover">
                     <thead>
-                        <tr>
-                            <th>Transaction Type</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Trx ID</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">Transaction Type</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col">Date</th>
+                        <th scope="col" class="w-25">Trx ID</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach ($transactions as $transaction)
-                        <tr>
+                    @foreach ($transactions as $transaction)
+                        <tr scope="row">
                             <td>{{$transaction->type}}</td>
-                            <td>
-                                @if($transaction->type == 'deposit' || $transaction->type == 'sent')
-                                {{'-' . $transaction->amount}}
-                                @else
-                                {{'+' . $transaction->amount}}
-                                @endif
-                            </td>
-                            <td>{{$transaction->new_balance}}</td>
-                            <td>{{$transaction->created_at}}</td>
-                            <td>{{$transaction->trx_no}}</td>
+                            @if($transaction->type == 'deposit' || $transaction->type == 'sent')
+                                <td class="trx_amount red">{{'-' . $transaction->amount}}
+                            @else
+                                <td class="trx_amount green">{{'+' . $transaction->amount}}
+                                    @endif
+                                </td>
+                                <td>{{$transaction->new_balance}}</td>
+                                <td>{{$transaction->created_at}}</td>
+                                <td class="trx">{{$transaction->trx_no}}</td>
                         </tr>
-                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
+
             </div>
+            <div class="pagination">{{$transactions->links()}}</div>
         </div>
     </div>
 </div>

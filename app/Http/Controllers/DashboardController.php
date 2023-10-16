@@ -10,6 +10,7 @@ class DashboardController extends Controller
         $ac = (new PersonalAccountController)->showAccountInfo();
 //        dd($ac);
         $transactions = (new TransactionController)->transactions();
+//        dd($transactions);
         return view('dashboard', compact('transactions', 'ac'));
     }
 }
