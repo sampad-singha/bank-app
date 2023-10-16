@@ -31,6 +31,10 @@
             $('.content').hide();
             $('.Withdraw').show();
         });
+        $('btn_transactions').click(function (){
+            $('.content').hide();
+            $('.Transactions').show();
+        });
     });
 
 })(jQuery);

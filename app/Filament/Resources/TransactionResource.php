@@ -77,7 +77,7 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('receiver_id')
+                Tables\Columns\TextColumn::make('receiver_account_no')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')

@@ -87,6 +87,7 @@ class PendingTransactionResource extends Resource
                         $record->status = 'Accepted';
                         $account = Account::where('account_no', $record->account_no)->first();
                         $account->balance = $account->balance - $record->amount;
+                        $record->new_balance = $account->balance;
                         $account->update();
                         $record->save();
                     })

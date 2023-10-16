@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalAccountController;
@@ -30,17 +32,15 @@ return view('form');
 route::get('/services', function () {
 return view('services');
 })->middleware(['auth', 'verified'])->name('services');
-//route::get('/profile', function () {
-//return view('user-profile');
-//})->name('user-profile');
-// services routes
 
 
 // Form Routes
 Route::get('/open-account', [PersonalAccountController::class, 'index'])->name('p-account');
 Route::post('/open-account', [PersonalAccountController::class, 'storeAccountInfo'])->name('p-account-store');
 
-Route::get('/dashboard', [PersonalAccountController::class, 'showAccountInfo'])->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard', [PersonalAccountController::class, 'showAccountInfo'])->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard/transactions', [TransactionController::class, 'transactions'])->middleware(['auth', 'verified'])->name('transactions');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -49,6 +49,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Transaction Routes
-Route::post('/withdraw', [PersonalAccountController::class, 'withdraw'])->name('withdraw');
+Route::post('/withdraw', [TransactionController::class, 'withdraw'])->name('withdraw');
 
 require __DIR__.'/auth.php';

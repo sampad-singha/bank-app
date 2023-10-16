@@ -17,8 +17,9 @@ class Transaction extends Model
         'account_no',
         'type',
         'trx_no',
-        'receiver_id',
+        'receiver_account_no',
         'amount',
+        'new_balance',
         'status'
     ];
 
