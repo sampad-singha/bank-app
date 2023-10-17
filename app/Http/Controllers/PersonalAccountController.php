@@ -71,15 +71,15 @@ class PersonalAccountController extends Controller
             ->where('email', $user_email)
             ->get();
 
-//        if($account->isEmpty()){
-//            $ac = null;
-//            return view('dashboard', compact('user_email'))->with('success', $user_email);
-//        }
+        if($account->isEmpty()){
+            $ac = null;
+            return 'Admins are not allowed to create account';
+        }
 
-        $ac = $account[0];
-//        dd($ac);
+        //        dd($ac);
 
 //        return view('dashboard', compact('ac'))->with('success', $ac);
+        $ac = $account[0];
         return $ac;
     }
 }

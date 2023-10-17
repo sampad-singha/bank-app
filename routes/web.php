@@ -38,8 +38,7 @@ return view('services');
 Route::get('/open-account', [PersonalAccountController::class, 'index'])->name('p-account');
 Route::post('/open-account', [PersonalAccountController::class, 'storeAccountInfo'])->name('p-account-store');
 
-//Route::get('/dashboard', [PersonalAccountController::class, 'showAccountInfo'])->middleware(['auth', 'verified'])->name('dashboard');
-//Route::get('/dashboard/transactions', [TransactionController::class, 'transactions'])->middleware(['auth', 'verified'])->name('transactions');
+// Dashboard Routes
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -15,14 +15,14 @@
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ route('home') }}">Home</a></li>
                             <li class="nav-item"><a class="nav-link"
-                                    href="{{ route('about') }}">About</a></li>
+                                    href="{{ route('about') }}">Schemes</a></li>
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ route('form') }}">Forms</a></li>
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ route('services') }}">Services</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                    href="{{ route('dashboard') }}">Profile</a>
+                                    href="{{ route('dashboard') }}">{{strtok(Auth::user()->email, '@')}}</a>
                             </li>
                         </ul>
                     </div>
@@ -43,7 +43,7 @@
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ route('home') }}">Home</a></li>
                             <li class="nav-item"><a class="nav-link"
-                                    href="{{ route('about') }}">About</a></li>
+                                    href="{{ route('about') }}">Schemes</a></li>
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ route('form') }}">Forms</a></li>
                             <li class="nav-item"><a class="nav-link"

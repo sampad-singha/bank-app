@@ -15,6 +15,10 @@ class TransactionController extends Controller
         $account_no = DB::table('accounts')
             ->where('email', $email)
             ->get('account_no');
+        if($account_no->isEmpty()){
+            echo "<h1 style='text-align: center'>Admins cant have accounts</h1>";
+            exit();
+        }
         $account_no = $account_no[0]->account_no;
         //        return view('dashboard', compact('transactions'))->with('success', $transactions);
         return DB::table('transactions')
