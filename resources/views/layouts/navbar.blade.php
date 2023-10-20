@@ -22,7 +22,12 @@
                                     href="{{ route('services') }}">Services</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                    href="{{ route('dashboard') }}">{{strtok(Auth::user()->email, '@')}}</a>
+                                    href="{{ route('dashboard') }}">
+                                    <img src="{{asset('/storage/' . Auth::user()->account->image_path)}}" alt="profile image"
+                                         style="height:30px;
+                                                border-radius: 50%;
+                                                margin-left: 50px">
+                                </a>
                             </li>
                         </ul>
                     </div>

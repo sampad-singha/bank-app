@@ -30,8 +30,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        $email = Auth::user()->email;
-        if(str_ends_with($email, '@admin.com')){
+        $role = Auth::user()->role;
+        if($role == 'admin'){
             return redirect('/admin');
         }
         return redirect()->intended(RouteServiceProvider::HOME);

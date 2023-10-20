@@ -36,7 +36,7 @@
                     @foreach ($transactions as $transaction)
                         <tr scope="row">
                             <td>{{$transaction->type}}</td>
-                            @if($transaction->type == 'deposit' || $transaction->type == 'sent')
+                            @if($transaction->type == 'withdrawal' || $transaction->type == 'sent')
                                 <td class="trx_amount red">{{'-' . $transaction->amount}}
                             @else
                                 <td class="trx_amount green">{{'+' . $transaction->amount}}
